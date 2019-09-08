@@ -5,7 +5,7 @@ RUN npm install && npm run build
 
 FROM nginx
 RUN mkdir /app
-COPY --from=0 /vue/dist /app
+COPY /vue/dist /app
 COPY nginx.conf /etc/nginx/nginx.conf
 
 ENV PORT 8081
