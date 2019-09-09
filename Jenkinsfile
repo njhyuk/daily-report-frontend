@@ -23,6 +23,7 @@ pipeline {
           sh "jx step credential -s npm-token -k file -f /builder/home/.npmrc --optional=true"
           sh "npm install"
           sh "CI=true DISPLAY=:99 npm run lint"
+          sh "npm run build"
           sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
           dir('./charts/preview') {
