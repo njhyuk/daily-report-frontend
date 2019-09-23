@@ -11,19 +11,12 @@ export default new vueRouter({
     {
       path: '/',
       name: 'dashboard',
-      meta: {
-        auth: true,
-        redirect: '/login',
-      },
       component: () => import('./views/Dashboard.vue'),
     },
     {
       path: '/login',
       name: 'login',
-      meta: {
-        layout: 'full',
-        auth: false,
-      },
+      meta: {layout: 'full'},
       component: () => import('./views/Login.vue'),
     },
   ],
