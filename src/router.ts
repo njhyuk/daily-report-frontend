@@ -4,13 +4,16 @@ import fullLayout from '@/components/layouts/Full.vue';
 
 vue.use(vueRouter);
 
-export default new vueRouter({
+const router = new vueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: 'dashboard',
+      meta: {
+        auth: true,
+      },
       component: () => import('./views/Dashboard.vue'),
     },
     {
@@ -21,3 +24,6 @@ export default new vueRouter({
     },
   ],
 });
+
+(vue as any).router = router;
+export default router;

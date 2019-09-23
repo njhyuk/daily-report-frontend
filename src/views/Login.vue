@@ -1,7 +1,7 @@
 <template>
   <v-layout align-center justify-center>
     <v-flex xs12 sm8 md4>
-     <v-text-field v-model="email" label="E-mail" required></v-text-field>
+     <v-text-field v-model="username" label="E-mail" required></v-text-field>
       <v-text-field
         v-model="password"
         :append-icon="showPassword ? 'visibility' : 'visibility_off'"
@@ -26,12 +26,15 @@ import layout from '@/components/layouts/Full.vue';
 })
 export default class Login extends Vue {
   public layout = layout;
-  protected email = '';
+  protected username = '';
   protected password = '';
-  protected showPassword = '';
+  protected showPassword = false;
 
   public submit() {
-    this.$router.push('/');
+    this.$auth.login({
+      username: this.username,
+      password: this.password,
+    });
   }
 }
 </script>
