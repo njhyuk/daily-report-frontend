@@ -4,15 +4,9 @@ import vuex from 'vuex';
 vue.use(vuex);
 
 const store = new vuex.Store({
-  state: {
-
-  },
-  mutations: {
-
-  },
-  actions: {
-
-  },
+  state: {},
+  mutations: {},
+  actions: {},
 });
 
 (vue as any).store = store;

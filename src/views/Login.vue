@@ -1,7 +1,7 @@
 <template>
   <v-layout align-center justify-center>
     <v-flex xs12 sm8 md4>
-     <v-text-field v-model="username" label="E-mail" required></v-text-field>
+      <v-text-field v-model="username" label="E-mail" required></v-text-field>
       <v-text-field
         v-model="password"
         :append-icon="showPassword ? 'visibility' : 'visibility_off'"
@@ -18,23 +18,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import layout from '@/components/layouts/Full.vue';
+  import {Component, Vue} from 'vue-property-decorator';
+  import layout from '@/components/layouts/Full.vue';
 
-@Component({
-  components: {},
-})
-export default class Login extends Vue {
-  public layout = layout;
-  protected username = '';
-  protected password = '';
-  protected showPassword = false;
+  @Component({
+    components: {},
+  })
+  export default class Login extends Vue {
+    public layout = layout;
+    protected username = '';
+    protected password = '';
+    protected showPassword = false;
 
-  public submit() {
-    this.$auth.login({
-      username: this.username,
-      password: this.password,
-    });
+    protected submit() {
+      this.$auth.login({
+        username: this.username,
+        password: this.password,
+      });
+    }
   }
-}
 </script>
