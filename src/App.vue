@@ -1,37 +1,29 @@
 <template>
-  <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-app-bar>
-
-    <v-content>
-      <HelloWorld/>
-    </v-content>
-  </v-app>
+  <component :is="layout">
+    <router-view ref="routerView" />
+  </component>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+  import {Component, Vue} from 'vue-property-decorator';
+  import layout from './components/layouts/Default.vue';
+  import {VueConstructor} from 'vue';
 
-export default Vue.extend({
-  name: 'App',
-  components: {
-    HelloWorld,
-  },
-  data: () => ({
-    //
-  }),
-});
+  @Component
+  export default class App extends Vue {
+    public layout = layout;
+
+    public $refs!: Vue['$refs'] & {
+      routerView: {
+        layout: VueConstructor,
+      };
+    };
+
+    public mounted() {
+      const layout2 = this.$refs.routerView.layout;
+      if (layout2) {
+        this.layout = layout2; //
+      }
+    }
+  }
 </script>
