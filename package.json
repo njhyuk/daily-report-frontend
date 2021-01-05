@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@d0whc3r/vue-auth-plugin": "^1.5.2",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
